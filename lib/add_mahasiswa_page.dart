@@ -64,66 +64,71 @@ class _AddMahasiswaPageState extends State<AddMahasiswaPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tambah Data Mahasiswa'),
+        backgroundColor: Colors.teal,
       ),
-      body: Padding(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal, Colors.cyan],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                controller: _namalengkapController,
-                decoration: const InputDecoration(labelText: 'Nama Lengkap'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan Nama';
-                  }
-                  return null;
-                },
-              ),
+              _buildTextField(
+                  _namalengkapController, 'Nama Lengkap', 'Masukan Nama'),
               const SizedBox(height: 16),
-              TextFormField(
-                controller: _prodiController,
-                decoration: const InputDecoration(labelText: 'Prodi'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan Prodi';
-                  }
-                  return null;
-                },
-              ),
+              _buildTextField(_prodiController, 'Prodi', 'Masukan Prodi'),
               const SizedBox(height: 16),
-              TextFormField(
-                controller: _alamatController,
-                decoration: const InputDecoration(labelText: 'Alamat'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan Alamat';
-                  }
-                  return null;
-                },
-              ),
+              _buildTextField(_alamatController, 'Alamat', 'Masukan Alamat'),
               const SizedBox(height: 16),
-              TextFormField(
-                controller: _asalsekolahController,
-                decoration: const InputDecoration(labelText: 'Asal Sekolah'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan nama Sekolah';
-                  }
-                  return null;
-                },
-              ),
+              _buildTextField(_asalsekolahController, 'Asal Sekolah',
+                  'Masukan nama Sekolah'),
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: _submitData,
                 child: const Text('Tambah Data'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.white,
+                ),
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildTextField(
+      TextEditingController controller, String label, String errorText) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: TextStyle(color: Colors.white),
+        filled: true,
+        fillColor: Colors.teal.shade700,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.0),
+          borderSide: BorderSide.none,
+        ),
+      ),
+      style: TextStyle(
+        color: Colors.white,
+        fontFamily: 'Roboto', // Applying custom font here
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return errorText;
+        }
+        return null;
+      },
     );
   }
 }

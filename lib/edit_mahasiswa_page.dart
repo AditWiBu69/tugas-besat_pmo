@@ -84,65 +84,112 @@ class _EditMahasiswaPageState extends State<EditMahasiswaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Data Mahasiswa'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: _namalengkapController,
-                decoration: const InputDecoration(labelText: 'Nama Lengkap'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan nama';
-                  }
-                  return null;
-                },
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.teal, Colors.cyan],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Edit Data Mahasiswa',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontFamily: 'CustomFont', // Replace with your font name
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  TextFormField(
+                    controller: _namalengkapController,
+                    decoration: const InputDecoration(
+                      labelText: 'Nama Lengkap',
+                      labelStyle: TextStyle(color: Colors.white),
+                      filled: true,
+                      fillColor: Colors.teal,
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Masukan nama';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _prodiController,
+                    decoration: const InputDecoration(
+                      labelText: 'Prodi',
+                      labelStyle: TextStyle(color: Colors.white),
+                      filled: true,
+                      fillColor: Colors.teal,
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Masukan prodi';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _alamatController,
+                    decoration: const InputDecoration(
+                      labelText: 'Alamat',
+                      labelStyle: TextStyle(color: Colors.white),
+                      filled: true,
+                      fillColor: Colors.teal,
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Masukan alamat';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _asalsekolahController,
+                    decoration: const InputDecoration(
+                      labelText: 'Asal Sekolah',
+                      labelStyle: TextStyle(color: Colors.white),
+                      filled: true,
+                      fillColor: Colors.teal,
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Masukan nama sekolah';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 24),
+                  ElevatedButton(
+                    onPressed: _submitData,
+                    child: const Text('Edit Data'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal.shade700, // Background color
+                      foregroundColor:
+                          Colors.white, // Updated text color property
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _prodiController,
-                decoration: const InputDecoration(labelText: 'Prodi'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan prodi';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _alamatController,
-                decoration: const InputDecoration(labelText: 'Alamat'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan alamat';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: _asalsekolahController,
-                decoration: const InputDecoration(labelText: 'Asal Sekolah'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Masukan nama sekolah';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _submitData,
-                child: const Text('Edit Data'),
-              ),
-            ],
+            ),
           ),
         ),
       ),
