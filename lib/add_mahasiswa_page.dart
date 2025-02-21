@@ -16,6 +16,7 @@ class _AddMahasiswaPageState extends State<AddMahasiswaPage> {
   final TextEditingController _prodiController = TextEditingController();
   final TextEditingController _alamatController = TextEditingController();
   final TextEditingController _asalsekolahController = TextEditingController();
+  final TextEditingController _fotoProfilController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final Dio _dio = Dio();
 
@@ -33,6 +34,7 @@ class _AddMahasiswaPageState extends State<AddMahasiswaPage> {
               'prodi': _prodiController.text,
               'alamat': _alamatController.text,
               'asalsekolah': _asalsekolahController.text,
+              'foto_profil': _fotoProfilController.text,
             },
             options: Options(
               headers: {'Authorization': 'Bearer $token'},
@@ -89,6 +91,9 @@ class _AddMahasiswaPageState extends State<AddMahasiswaPage> {
               const SizedBox(height: 16),
               _buildTextField(_asalsekolahController, 'Asal Sekolah',
                   'Masukan nama Sekolah'),
+              const SizedBox(height: 16),
+              _buildTextField(_fotoProfilController, 'URL Foto Profil',
+                  'Masukan URL Foto Profil'),
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: _submitData,

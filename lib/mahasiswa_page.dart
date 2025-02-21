@@ -62,7 +62,7 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
         title: const Text('Mahasiswa List',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.teal,
-      ), 
+      ),
       body: ListView.builder(
         itemCount: _mahasiswaList.length,
         itemBuilder: (context, index) {
@@ -79,19 +79,34 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
                     fontSize: 18,
                     color: Colors.teal),
               ),
-              subtitle: Text(
-                mahasiswa['prodi'],
-                style: TextStyle(fontSize: 16, color: Colors.grey[600]),
-
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    mahasiswa['prodi'],
+                    style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                  ),
+                  SizedBox(height: 4),
+                  Text(
+                    mahasiswa['alamat'],
+                    style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                  ),
+                ],
               ),
-              leading: CircleAvatar(
-                backgroundColor: Colors.teal[100],
-                child: Text(
-                  mahasiswa['namalengkap'][0],
-                  style: TextStyle(
-                      color: Colors.teal, fontWeight: FontWeight.bold),
-                ),
-              ),
+              leading: mahasiswa['foto_profil'] != null &&
+                      mahasiswa['foto_profil'].isNotEmpty
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(mahasiswa['foto_profil']),
+                      backgroundColor: Colors.transparent,
+                    )
+                  : CircleAvatar(
+                      backgroundColor: Colors.teal[100],
+                      child: Text(
+                        mahasiswa['namalengkap'][0],
+                        style: TextStyle(
+                            color: Colors.teal, fontWeight: FontWeight.bold),
+                      ),
+                    ),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -110,6 +125,8 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
                             prodi: mahasiswa['prodi'],
                             alamat: mahasiswa['alamat'],
                             asalsekolah: mahasiswa['asalsekolah'],
+                            fotoProfil: mahasiswa[
+                                'foto_profil'], // Added fotoProfil parameter
                             onDataUpdated: _fetchMahasiswaData,
                           ),
                         ),

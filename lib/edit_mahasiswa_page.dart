@@ -8,6 +8,7 @@ class EditMahasiswaPage extends StatefulWidget {
   final String prodi;
   final String alamat;
   final String asalsekolah;
+  final String fotoProfil;
   final Function onDataUpdated;
 
   const EditMahasiswaPage({
@@ -17,6 +18,7 @@ class EditMahasiswaPage extends StatefulWidget {
     required this.prodi,
     required this.alamat,
     required this.asalsekolah,
+    required this.fotoProfil,
     required this.onDataUpdated,
   });
 
@@ -29,6 +31,7 @@ class _EditMahasiswaPageState extends State<EditMahasiswaPage> {
   final TextEditingController _prodiController = TextEditingController();
   final TextEditingController _alamatController = TextEditingController();
   final TextEditingController _asalsekolahController = TextEditingController();
+  final TextEditingController _fotoProfilController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final Dio _dio = Dio();
 
@@ -39,6 +42,7 @@ class _EditMahasiswaPageState extends State<EditMahasiswaPage> {
     _prodiController.text = widget.prodi;
     _alamatController.text = widget.alamat;
     _asalsekolahController.text = widget.asalsekolah;
+    _fotoProfilController.text = widget.fotoProfil;
   }
 
   Future<void> _submitData() async {
@@ -55,6 +59,7 @@ class _EditMahasiswaPageState extends State<EditMahasiswaPage> {
               'prodi': _prodiController.text,
               'alamat': _alamatController.text,
               'asalsekolah': _asalsekolahController.text,
+              'foto_profil': _fotoProfilController.text,
             },
             options: Options(
               headers: {'Authorization': 'Bearer $token'},
@@ -177,14 +182,30 @@ class _EditMahasiswaPageState extends State<EditMahasiswaPage> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _fotoProfilController,
+                    decoration: const InputDecoration(
+                      labelText: 'URL Foto Profil',
+                      labelStyle: TextStyle(color: Colors.white),
+                      filled: true,
+                      fillColor: Colors.teal,
+                      border: OutlineInputBorder(),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Masukan URL foto profil';
+                      }
+                      return null;
+                    },
+                  ),
                   const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: _submitData,
                     child: const Text('Edit Data'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.teal.shade700, // Background color
-                      foregroundColor:
-                          Colors.white, // Updated text color property
+                      foregroundColor: Colors.white,
                     ),
                   ),
                 ],
