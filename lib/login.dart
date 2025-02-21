@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'register.dart'; // Import RegisterPage
 import 'mahasiswa_page.dart'; // Import MahasiswaPage
+import 'tentang_aplikasi.dart'; // Import TentangAplikasiPage
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -84,7 +85,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   const SizedBox(height: 32),
-                  // Username Field with Icon
                   TextFormField(
                     controller: _emailController,
                     decoration: const InputDecoration(
@@ -93,8 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                       filled: true,
                       border: OutlineInputBorder(),
                       labelStyle: TextStyle(color: Colors.black54),
-                      prefixIcon: Icon(Icons.person,
-                          color: Colors.black54), // Icon added here
+                      prefixIcon: Icon(Icons.person, color: Colors.black54),
                     ),
                     keyboardType: TextInputType.emailAddress,
                     validator: (value) {
@@ -105,7 +104,6 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                   const SizedBox(height: 16),
-                  // Password Field with Lock Icon
                   TextFormField(
                     controller: _passwordController,
                     decoration: const InputDecoration(
@@ -114,8 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                       filled: true,
                       border: OutlineInputBorder(),
                       labelStyle: TextStyle(color: Colors.black54),
-                      prefixIcon: Icon(Icons.lock,
-                          color: Colors.black54), // Added lock icon here
+                      prefixIcon: Icon(Icons.lock, color: Colors.black54),
                     ),
                     obscureText: true,
                     validator: (value) {
@@ -152,6 +149,23 @@ class _LoginPageState extends State<LoginPage> {
                         fontSize: 16,
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const TentangAplikasiPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 36, vertical: 18),
+                    ),
+                    child: const Text('Tentang Aplikasi'),
                   ),
                 ],
               ),

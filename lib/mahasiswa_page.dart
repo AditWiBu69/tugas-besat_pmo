@@ -62,7 +62,7 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
         title: const Text('Mahasiswa List',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.teal,
-      ),
+      ), 
       body: ListView.builder(
         itemCount: _mahasiswaList.length,
         itemBuilder: (context, index) {
@@ -82,6 +82,7 @@ class _MahasiswaPageState extends State<MahasiswaPage> {
               subtitle: Text(
                 mahasiswa['prodi'],
                 style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+
               ),
               leading: CircleAvatar(
                 backgroundColor: Colors.teal[100],

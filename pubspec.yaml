@@ -20,3 +20,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/logo.png  # Pastikan gambar berada di dalam folder assets
+    - assets/pp.jpg
+    - assets/1.jpg

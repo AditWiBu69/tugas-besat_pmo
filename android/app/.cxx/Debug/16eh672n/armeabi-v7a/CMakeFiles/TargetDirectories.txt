@@ -1,0 +1,2 @@
+D:/andro/tugas-besat_pmo/android/app/.cxx/Debug/16eh672n/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/andro/tugas-besat_pmo/android/app/.cxx/Debug/16eh672n/armeabi-v7a/CMakeFiles/rebuild_cache.dir
