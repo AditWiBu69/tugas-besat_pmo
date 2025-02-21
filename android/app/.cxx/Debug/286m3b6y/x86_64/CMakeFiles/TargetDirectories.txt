@@ -1,0 +1,2 @@
+/home/buxx/Desktop/Projects/pm/android/app/.cxx/Debug/286m3b6y/x86_64/CMakeFiles/edit_cache.dir
+/home/buxx/Desktop/Projects/pm/android/app/.cxx/Debug/286m3b6y/x86_64/CMakeFiles/rebuild_cache.dir
